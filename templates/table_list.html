@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Restaurant Tables</h2>
+<div class="row">
+  {% for table in tables %}
+  <div class="col-md-4 mb-3">
+    <div class="card">
+      {% if table.image %}<img src="{{ table.image.url }}" class="card-img-top" style="height:180px;object-fit:cover;">{% endif %}
+      <div class="card-body">
+        <h5>Table {{ table.table_number }}</h5>
+        <p>Capacity: {{ table.capacity }}</p>
+        <a href="{% url 'table_detail' table.id %}" class="btn btn-success">Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

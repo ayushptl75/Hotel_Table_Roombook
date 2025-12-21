@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Search results for '{{ q }}'</h3>
+
+<h4>Rooms</h4>
+<div class="row">
+  {% for r in rooms %}
+    <div class="col-md-4"><div class="card mb-2 p-2"><h5>{{ r.name }}</h5><p>₹{{ r.price }}</p></div></div>
+  {% empty %}<p>No rooms found.</p>{% endfor %}
+</div>
+
+<h4>Tables</h4>
+<div class="row">
+  {% for t in tables %}
+    <div class="col-md-4"><div class="card mb-2 p-2"><h5>Table {{ t.table_number }}</h5><p>Capacity: {{ t.capacity }}</p></div></div>
+  {% empty %}<p>No tables found.</p>{% endfor %}
+</div>
+{% endblock %}

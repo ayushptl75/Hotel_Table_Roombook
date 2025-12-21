@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Table {{ table.table_number }}</h2>
+{% if table.image %}<img src="{{ table.image.url }}" class="img-fluid mb-3" style="max-height:300px;object-fit:cover;">{% endif %}
+<p>{{ table.description }}</p>
+<p><strong>Seats:</strong> {{ table.capacity }}</p>
+
+<h4>Book Table</h4>
+<form method="post" action="{% url 'book_table' table.id %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-success">Book Table</button>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ room.name }}</h2>
+{% if room.image %}<img src="{{ room.image.url }}" class="img-fluid mb-3" style="max-height:300px;object-fit:cover;">{% endif %}
+<p>{{ room.description }}</p>
+<p><strong>Price:</strong> ₹{{ room.price }}</p>
+<p><strong>Capacity:</strong> {{ room.capacity }}</p>
+
+<h4>Book Room</h4>
+<form method="post" action="{% url 'book_room' room.id %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary">Book Now</button>
+</form>
+{% endblock %}
